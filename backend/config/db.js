@@ -1,0 +1,8 @@
+const mysql = require("mysql2/promise");
+require("dotenv").config();
+
+const db = mysql.createPool(process.env.DATABASE_URL);
+
+console.log("Database connected 🚀");
+
+module.exports = db;

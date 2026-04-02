@@ -1,0 +1,7 @@
+./frontend/expance-tracker/.env
+./backend/.env
+
+
+./frontend/expance-tracker/node_module
+./backend/node_module
+
