@@ -1,7 +1,9 @@
-./frontend/expance-tracker/.env
-./backend/.env
+# Node modules
+node_modules/
+frontend/expance-tracker/node_modules/
+backend/node_modules/
 
-
-./frontend/expance-tracker/node_modules/
-./backend/node_modules/
-
+# Environment files
+.env
+frontend/expance-tracker/.env
+backend/.env
