@@ -16,9 +16,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
-  const {updateUser} = useContext(UserContext);
+  const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,31 +43,35 @@ const SignUp = () => {
     }
     setError("");
 
-
     // API logic
     try {
-        if(profilePic){
-          const imgUploadRes = await uploadImage(profilePic);
-          console.log("image uplod response",imgUploadRes)
-          profileImageUrl= imgUploadRes?.data || "";
+      if (profilePic) {
+        const imgUploadRes = await uploadImage(profilePic);
+
+        console.log("image upload response", imgUploadRes);
+
+        // 🚨 STOP if upload failed
+        if (!imgUploadRes || imgUploadRes.status !== "success") {
+          setError(imgUploadRes?.message || "Image upload failed");
+          return; // ❌ stop signup
         }
 
+        profileImageUrl = imgUploadRes.data;
+      }
 
       const response = await axiosInstance.post(API_PATH.AUTH.REGISTER, {
         fullName,
         email,
         password,
-        profileImageUrl
+        profileImageUrl,
       });
 
-      const {token, user} = response.data.data;
-      if(token){
-        localStorage.setItem("token", token)
+      const { token, user } = response.data.data;
+      if (token) {
+        localStorage.setItem("token", token);
         updateUser(user);
-        navigate('/dashboard')
-        
+        navigate("/dashboard");
       }
-
 
       toast("User Register Successfull", {
         position: "top-right",
@@ -81,12 +84,11 @@ const SignUp = () => {
         theme: "dark",
         transition: Bounce,
       });
-
     } catch (error) {
-      if(error.response && error.response.data.message){
-        setError(error.response.data.message)
-      }else{
-        setError("Something went wrong. Try again later.")
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong. Try again later.");
       }
     }
   };
@@ -107,7 +109,7 @@ const SignUp = () => {
             <Input
               value={fullName}
               placeholder="John"
-              onChange={( target ) => setFullName(target)}
+              onChange={(target) => setFullName(target)}
               label="Full Name"
               type="text"
             />
