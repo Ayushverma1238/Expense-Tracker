@@ -22,7 +22,7 @@ router.post(
       return response(res, 400, "No file uploaded");
     }
 
-    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    const imageUrl = `https://${req.get("host")}/uploads/${req.file.filename}`;
 
     return response(res, 200, "File uploaded successfully", imageUrl);
   }
