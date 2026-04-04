@@ -3,6 +3,14 @@ require("dotenv").config();
 
 const db = mysql.createPool(process.env.DATABASE_URL);
 
+
+// const db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "Ayush@1234",
+//   database: "expanceTracker",
+// });
+
 console.log("Database connected 🚀");
 
 module.exports = db;

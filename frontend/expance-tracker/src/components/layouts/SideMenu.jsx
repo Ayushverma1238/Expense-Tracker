@@ -22,6 +22,7 @@ const SideMenu = ({ activeMenu }) => {
     clearUser();
     navigate("/login");
   };
+  
   return (
     <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200/50 p-5 sticky top-15.25 z-20">
       <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">

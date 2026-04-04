@@ -12,7 +12,7 @@ const DashboardLayout = ({children, activeMenu}) => {
 
         {user && (
             <div className="flex">
-                <div className='max-[1080px0:hidden'>
+                <div className='hidden md:inline-block transition-all duration-200 ease-in'>
                     <SideMenu activeMenu= {activeMenu} />
 
                 </div>
