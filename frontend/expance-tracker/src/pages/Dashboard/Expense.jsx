@@ -104,7 +104,6 @@ const Expense = () => {
       const response = await axiosInstance.get(API_PATH.EXPENSE.DOWNLOAD_EXPENSE,{
         responseType:'blob'
       })
-      // console.log('response', response?.data)
       // Creating a url for blog
 
       const url = window.URL.createObjectURL(new Blob([response?.data]))

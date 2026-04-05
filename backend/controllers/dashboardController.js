@@ -13,7 +13,6 @@ exports.getDashboardData = async (req, res) => {
     // const last30Days = formatDate(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000));
     // const last5Days = formatDate(new Date(Date.now() - 5 * 24 * 60 * 60 * 1000));
 
-    // console.log("Date Range:", { last30Days, today });
     // ✅ Total Income
     const [[totalIncomeResult]] = await db.query(
       `SELECT SUM(amount) as totalIncome FROM incomes WHERE user_id = ?`,

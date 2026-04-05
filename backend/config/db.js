@@ -11,6 +11,4 @@ const db = mysql.createPool(process.env.DATABASE_URL);
 //   database: "expanceTracker",
 // });
 
-console.log("Database connected 🚀");
-
 module.exports = db;

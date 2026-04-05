@@ -75,14 +75,12 @@ exports.deleteIncome = async (req, res) => {
 
 // Download Income expences in excel sheet
 exports.downloadIncomeExcel = async (req, res) => {
-    console.log("User id is ", req.user);
     const userId = req.user.id;
 
   try {
     const income = await getAllIncomeData({userId});
 
     // prepare data
-    console.log(income[0].date)
     const data = income.map((item) => ({
         
       Source: item.source,

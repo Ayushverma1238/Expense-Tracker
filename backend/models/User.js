@@ -17,9 +17,8 @@ const createUserTable = async () => {
 
   try {
     const [result] = await db.query(query); // ✅ NO callback
-    console.log("User table ready");
   } catch (err) {
-    console.log("Error creating user table:", err);
+    console.error("Error creating user table:", err);
   }
 };
 

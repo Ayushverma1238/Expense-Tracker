@@ -20,7 +20,6 @@ const createIncomeTable = async () => {
 
   try {
     const [result] = await db.query(query);
-    console.log("Income table ready");
   } catch (err) {
     console.error("Error creating income table:", err);
   }

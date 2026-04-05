@@ -49,7 +49,6 @@ const Home = () => {
 
   },[])
 
-  // console.log('dashboard data', dashboardData)
   return (
     <DashboardLayout
     activeMenu="Dashboard"

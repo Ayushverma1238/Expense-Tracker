@@ -67,7 +67,6 @@ const SignUp = () => {
         updateUser(user);
         navigate("/login");
       }
-      // console.log("User", user);
 
       toast("User Register Successfull", {
         position: "top-right",

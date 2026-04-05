@@ -24,9 +24,8 @@ app.use(express.json());
 (async () => {
     try {
         await db.query("SELECT 1");
-        console.log("Database connected successfully");
     } catch (error) {
-        console.log("Database connection failed", error);
+        console.error("Database connection failed", error);
     }
 })();
 
@@ -41,6 +40,4 @@ app.use("/api/dashboard", dashboardRoute);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running at ${PORT}`);
-});
+app.listen(PORT);

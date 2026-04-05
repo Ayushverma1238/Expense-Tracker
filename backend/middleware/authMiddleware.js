@@ -21,7 +21,7 @@ exports.protect = async (req, res, next) => {
       return res.status(401).json({ message: "No token provided" });
     }
   } catch (error) {
-    console.log("JWT token error", error);
+    console.error("JWT token error", error);
     return res.status(401).json({ message: "Token failed" });
   }
 };

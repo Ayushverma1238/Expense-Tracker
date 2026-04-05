@@ -107,7 +107,6 @@ const Income = () => {
           responseType: "blob",
         },
       );
-      // console.log('response', response?.data)
       // Creating a url for blog
 
       const url = window.URL.createObjectURL(new Blob([response?.data]));
@@ -156,7 +155,6 @@ const Income = () => {
           onClose={() => setOpenDeleteAlert({ show: false, data: null })}
           title="Delete Income"
         >
-          {console.log(openDeleteAlert)}
           <DeleteAlert
             content="Are you sure you want to delete this income detail?"
             onDelete={() => handleDeleteIncome(openDeleteAlert.data)}
