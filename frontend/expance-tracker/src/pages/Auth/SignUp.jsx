@@ -105,7 +105,7 @@ const SignUp = () => {
             image={profilePic}
             setProfilePic={setProfilePic}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col md:flex-row gap-4">
             <Input
               value={fullName}
               placeholder="John"
