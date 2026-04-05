@@ -70,7 +70,7 @@ const Expense = () => {
       });
 
       setOpenAddExpenseModel(false);
-      toast.success("Income added successfully.");
+      toast.success("Expense added successfully.");
       fetchExpenseDetail();
       return;
     } catch (error) {
