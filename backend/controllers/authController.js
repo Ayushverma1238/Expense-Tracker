@@ -12,27 +12,32 @@ const generateToken = (id) => {
 
 // Register user
 exports.registerUser = async (req, res) => {
-  const { fullName, email, password, profileImageUrl } = req.body;
-  // check validation field
+  const { fullName, email, password } = req.body;
+
+  // 👇 get image from Cloudinary (multer)
+  const profileImageUrl = req.file?.path|| "https://default-image-url.com/avatar.png"; // 👈 CLOUDINARY URL
+
   if (!fullName || !email || !password) {
-    return response(res, 400, "All filed is required.");
+    return response(res, 400, "All field is required.");
   }
 
   try {
     const query = `SELECT * from users WHERE email = ?`;
     const [rows] = await db.query(query, [email]);
+
     if (rows.length !== 0) {
       return response(res, 403, "This email is already register");
     }
 
-    // Creating user
     const user = await createUser({
       fullName,
       email,
       password,
-      profileImageUrl,
+      profileImageUrl, // ✅ correct URL
     });
+
     const token = generateToken(user.id);
+
     return response(res, 201, "User registered successfully", {
       user,
       token,

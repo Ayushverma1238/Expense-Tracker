@@ -21,7 +21,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let profileImageUrl = "";
     if (!fullName) {
       setError("Please enter your name.");
       return;
@@ -45,33 +44,30 @@ const SignUp = () => {
 
     // API logic
     try {
-      if (profilePic) {
-        const imgUploadRes = await uploadImage(profilePic);
+      const formData = new FormData();
 
-        console.log("image upload response", imgUploadRes);
+      formData.append("fullName", fullName);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("profileImage", profilePic); // 👈 file only
 
-        // 🚨 STOP if upload failed
-        if (!imgUploadRes || imgUploadRes.status !== "success") {
-          setError(imgUploadRes?.message || "Image upload failed");
-          return; // ❌ stop signup
-        }
-
-        profileImageUrl = imgUploadRes.data;
-      }
-
-      const response = await axiosInstance.post(API_PATH.AUTH.REGISTER, {
-        fullName,
-        email,
-        password,
-        profileImageUrl,
-      });
+      const response = await axiosInstance.post(
+        API_PATH.AUTH.REGISTER,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
+      );
 
       const { token, user } = response.data.data;
       if (token) {
         localStorage.setItem("token", token);
         updateUser(user);
-        navigate("/dashboard");
+        navigate("/login");
       }
+      // console.log("User", user);
 
       toast("User Register Successfull", {
         position: "top-right",
@@ -106,7 +102,6 @@ const SignUp = () => {
             setProfilePic={setProfilePic}
           />
           <div className="grid grid-cols-1 transition-all duration-200 ease-in lg:grid-cols-2 gap-4">
-            
             <Input
               value={fullName}
               placeholder="John"
