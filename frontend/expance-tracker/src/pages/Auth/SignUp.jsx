@@ -105,7 +105,8 @@ const SignUp = () => {
             image={profilePic}
             setProfilePic={setProfilePic}
           />
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="grid grid-cols-1 transition-all duration-200 ease-in lg:grid-cols-2 gap-4">
+            
             <Input
               value={fullName}
               placeholder="John"
@@ -120,7 +121,7 @@ const SignUp = () => {
               label="Email Address"
               placeholder="welcome@gmail.com"
             />
-            <div className="col-span-2">
+            <div className="lg:col-span-2">
               <Input
                 type="password"
                 value={password}
