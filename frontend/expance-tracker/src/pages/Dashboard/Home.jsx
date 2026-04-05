@@ -15,6 +15,7 @@ import Last30DaysExpenses from '../../components/Dashboard/Last30DaysExpenses';
 import RecentIncomeWithChart from '../../components/Dashboard/RecentIncomeWithChart';
 import RecentIncome from '../../components/Dashboard/RecentIncome';
 import Footer from './Footer';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   useUserAuth();
@@ -50,6 +51,10 @@ const Home = () => {
   },[])
 
   return (
+    <>
+ <Helmet>
+         <title>Dashboard | Expense Tracker</title>
+       </Helmet>
     <DashboardLayout
     activeMenu="Dashboard"
     >
@@ -120,6 +125,7 @@ const Home = () => {
       </div>
 
     </DashboardLayout>
+    </>
   )
 }
 

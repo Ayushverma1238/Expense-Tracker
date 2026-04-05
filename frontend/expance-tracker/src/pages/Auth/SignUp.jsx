@@ -7,7 +7,8 @@ import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATH } from "../../utils/apiPath";
 import { UserContext } from "../../context/UserContext.jsx";
-import uploadImage from "../../utils/uploadImage";
+// import uploadImage from "../../utils/uploadImage";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -89,6 +90,10 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    <Helmet>
+            <title>Register | Expense Tracker</title>
+          </Helmet>
     <Auth_layout>
       <div className="lg:w-full h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center ">
         <h3 className="text-xl font-semibold text-black">Create an Account</h3>
@@ -143,6 +148,7 @@ const SignUp = () => {
         </form>
       </div>
     </Auth_layout>
+    </>
   );
 };
 

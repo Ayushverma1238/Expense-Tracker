@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import IncomeList from "../../components/Income/IncomeList";
 import DeleteAlert from "../../components/DeleteAlert";
 import { useUserAuth } from "../../hooks/useUserAuth";
+import { Helmet } from "react-helmet-async";
 
 const Income = () => {
   useUserAuth();
@@ -125,6 +126,10 @@ const Income = () => {
   };
 
   return (
+    <>
+    <Helmet>
+             <title>Income | Expense Tracker</title>
+           </Helmet>
     <DashboardLayout activeMenu="Income">
       <div className="my-5 mx-auto">
         <div className="grid grid-cols-1 gap-4">
@@ -162,6 +167,7 @@ const Income = () => {
         </Modal>
       </div>
     </DashboardLayout>
+    </>
   );
 };
 

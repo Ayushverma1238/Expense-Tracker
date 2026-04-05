@@ -9,6 +9,7 @@ import Modal from "../../components/layouts/Modal";
 import AddExpenseForm from "../../components/Expense/AddExpenseForm";
 import DeleteAlert from "../../components/DeleteAlert";
 import ExpenseList from "../../components/Expense/ExpenseList";
+import { Helmet } from "react-helmet-async";
 const Expense = () => {
   useUserAuth();
   const [expenseData, setExpenseData] = useState([]);
@@ -122,6 +123,11 @@ const Expense = () => {
   };
 
   return (
+    <>
+    <Helmet>
+             <title>Expense | Expense Tracker</title>
+           </Helmet>
+    
     <DashboardLayout activeMenu="Expense">
       <div className="my-5 mx-auto">
         <div className="gri grid-cols-1 gap-6">
@@ -161,6 +167,7 @@ const Expense = () => {
         </Modal>
       </div>
     </DashboardLayout>
+    </>
   );
 };
 

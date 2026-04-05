@@ -7,7 +7,7 @@ const Auth_layout = ({children}) => {
     <div className='flex'>
 
     <div className='w-screen md:w-[60vw] px-12 pt-8 pb-12 h-screen'>
-        <h2 className='text-3xl font-bold text-gray-900'>Expance Tracker</h2>
+        <h2 className='text-3xl font-bold text-gray-900'>Expense Tracker</h2>
         {children}
     </div>
 
@@ -18,7 +18,7 @@ const Auth_layout = ({children}) => {
         <div className='grid grid-cols-1 z-20'>
             <StatsInfoCard
             icon={<LuTrendingUpDown />}
-            label ="Track Your Income & Expanses"
+            label ="Track Your Income & Expenses"
             value="430,000"
             color="bg-primary"
             />

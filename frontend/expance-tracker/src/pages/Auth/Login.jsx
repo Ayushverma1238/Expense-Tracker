@@ -7,6 +7,7 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATH } from "../../utils/apiPath";
 import { toast } from "react-toastify";
 import { UserContext } from "../../context/UserContext.jsx";
+import {Helmet} from 'react-helmet-async'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -69,6 +70,10 @@ const Login = () => {
     }
   };
   return (
+    <>
+    <Helmet>
+        <title>Login | Expense Tracker</title>
+      </Helmet>
     <Auth_layout>
       <div className="lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center">
         <h3 className="text-xl font-semibold">Welcome Back</h3>
@@ -108,6 +113,7 @@ const Login = () => {
         </form>
       </div>
     </Auth_layout>
+    </>
   );
 };
 
